@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_goods_manager"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ymss.tinyshop.GoodsManagerActivity">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f0f0f0"
+    android:orientation="vertical"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:background="#4a9df8"
+        android:gravity="center"
+        android:text="商品管理"
+        android:textColor="#ffffff"
+        android:textSize="20dp"
+        android:layout_height="50dp" />
+    <ImageView
+        android:id="@+id/title_img"
+        android:gravity="center"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:src = "@drawable/component_header_back_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp" />
+    <TextView
+        android:layout_toRightOf="@id/title_img"
+        android:text="首页"
+        android:gravity="center"
+        android:textColor="#ffffff"
+        android:textSize="18dp"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp" />
+
+    <ImageView
+        android:layout_alignParentRight="true"
+        android:id="@+id/title_exit"
+        android:gravity="center"
+        android:layout_marginRight="10dp"
+        android:src = "@drawable/asset_title_menu_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/search"
+        android:layout_below="@id/title"
+        android:layout_margin="15dp"
+        android:background="#FFFFFF"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_height="30dp" >
+        <ImageView
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/asset_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:text="请输入商品名称"
+            android:textColor="#d7d7d7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+ </LinearLayout>
+    
+    <LinearLayout
+        android:background="#FFFFFF"
+        android:layout_width="match_parent"
+        android:weightSum="2"
+        android:layout_height="40dp">
+        <TextView
+            android:id="@+id/selling"
+            android:text="销售中"
+            android:textSize="20dp"
+            android:layout_weight="1"
+            android:textColor="#d7d7d7"
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/sold_out"
+            android:text="已下架"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:textColor="#d7d7d7"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    
+    <ImageView
+        android:id="@+id/cursor"
+        android:src="@drawable/down_line"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/goods_viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></android.support.v4.view.ViewPager>
+
+</LinearLayout>
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/searchTitle"
+        android:background="#86222222"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:background="#4a9df8"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+            <ImageView
+                android:id="@+id/title_back"
+                android:gravity="center"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="10dp"
+                android:src = "@drawable/component_header_back_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:background="@drawable/bg_searchedit_shape"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp">
+
+                <ImageView
+                    android:id="@+id/title_img1"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:src = "@drawable/asset_search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <EditText
+                    android:id="@+id/search_edit"
+                    android:layout_width="220dp"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/search_start"
+                android:layout_width="0dp"
+                android:background="#009966"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="搜索"
+                android:textColor="#ffffff"
+                android:textSize="20dp"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</FrameLayout>

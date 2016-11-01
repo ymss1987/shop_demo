@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:gravity="center_vertical"
+    android:paddingTop="15dp"
+    android:paddingLeft="15dp"
+    android:paddingBottom="15dp"
+    android:layout_height="100dp">
+
+    <!--<ImageView android:id="@+id/img"
+        android:background="@drawable/goods_image_shape"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_margin="10px"/>-->
+    <com.ymss.view.SimpleTagImageView
+        xmlns:simple="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/img"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        simple:simple_tag_textSize="18sp"
+        simple:simple_corner_distance="30dp"
+        simple:simple_tag_text="AB"
+        simple:simple_tag_background_color="#af27CDC0"
+        simple:simple_tag_orientation="left_bottom"
+        simple:simple_tag_width="20dip"
+        simple:simple_tag_textColor="@android:color/white"
+        simple:simple_tag_enable="true"
+        simple:simple_tag_round_radius="10dp"
+        simple:simple_tag_textStyle="NORMAL"/>
+
+    <LinearLayout android:orientation="vertical"
+        android:layout_toRightOf="@id/img"
+        android:layout_marginLeft="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:textSize="18dp" />
+        <TextView android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#FF0000"
+            android:textSize="13dp" />
+
+        <TextView android:id="@+id/stock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#A0A0A0"
+            android:textSize="13dp" />
+
+    </LinearLayout>
+
+
+    <Button android:id="@+id/view_btn"
+        android:layout_width="30dp"
+        android:layout_height="15dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/asset_list_menu_icon"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true" />
+
+</RelativeLayout>

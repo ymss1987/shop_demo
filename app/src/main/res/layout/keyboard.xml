@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+<com.ymss.keyboard.BerKeyboardView
+
+android:id="@+id/keyboard_view"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_alignParentBottom="true"
+
+android:keyPreviewHeight="0dp"
+android:visibility="gone"
+android:background="#ffcccccc"
+    android:keyBackground="@drawable/bg_keyboard_btn"
+android:keyTextColor="#ff333333"
+    android:shadowRadius="0.0"
+    android:shadowColor="#ffcccccc"
+    />
+</RelativeLayout>
