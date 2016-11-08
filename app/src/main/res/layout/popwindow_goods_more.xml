@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="wrap_content"
-    android:background="@drawable/popwindow_menu"
     android:layout_height="wrap_content">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal" android:layout_width="wrap_content"
+        android:background="@drawable/shape_popwindow_goods_more"
+        android:layout_height="wrap_content">
+
     <LinearLayout
         android:orientation="vertical"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <ImageView
             android:src="@drawable/asset_list_menu_delete_icon"
             android:gravity="center"
-            android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
-            android:layout_marginRight="5dp"
             android:layout_marginBottom="5dp"
             android:layout_width="20dp"
             android:layout_height="20dp" />
@@ -20,25 +25,23 @@
             android:gravity="center"
             android:text="删除"
             android:textColor="#FFFFFF"
-            android:textSize="15sp"
+            android:textSize="12sp"
             android:layout_weight="1"
-            android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
-            android:layout_marginRight="5dp"
             android:layout_marginBottom="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>
     <LinearLayout
         android:orientation="vertical"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <ImageView
             android:src="@drawable/asset_list_menu_preview_icon"
             android:gravity="center"
-            android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
-            android:layout_marginRight="5dp"
             android:layout_marginBottom="5dp"
             android:layout_width="20dp"
             android:layout_height="20dp" />
@@ -46,23 +49,21 @@
             android:gravity="center"
             android:text="预览"
             android:textColor="#FFFFFF"
-            android:textSize="15sp"
-            android:layout_marginLeft="10dp"
+            android:textSize="12sp"
             android:layout_marginTop="5dp"
-            android:layout_marginRight="5dp"
             android:layout_marginBottom="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>
     <LinearLayout
         android:orientation="vertical"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <ImageView
             android:src="@drawable/asset_list_menu_share_icon"
-            android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
-            android:layout_marginRight="5dp"
             android:layout_marginBottom="5dp"
             android:gravity="center"
             android:layout_width="20dp"
@@ -71,23 +72,21 @@
             android:gravity="center"
             android:text="分享"
             android:textColor="#FFFFFF"
-            android:textSize="15sp"
-            android:layout_marginLeft="10dp"
+            android:textSize="12sp"
             android:layout_marginTop="5dp"
-            android:layout_marginRight="5dp"
             android:layout_marginBottom="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>
     <LinearLayout
         android:orientation="vertical"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="15dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <ImageView
             android:src="@drawable/asset_list_menu_down_icon"
-            android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
-            android:layout_marginRight="5dp"
             android:layout_marginBottom="5dp"
             android:gravity="center"
             android:layout_width="20dp"
@@ -96,13 +95,18 @@
             android:gravity="center"
             android:text="下架"
             android:textColor="#FFFFFF"
-            android:textSize="15sp"
-            android:layout_marginLeft="10dp"
+            android:textSize="12sp"
             android:layout_marginTop="5dp"
-            android:layout_marginRight="5dp"
             android:layout_marginBottom="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>
+    </LinearLayout>
+    <ImageView
+        android:layout_marginBottom="10dp"
+        android:layout_gravity="bottom"
+        android:src="@drawable/component_menu_images_rightarrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

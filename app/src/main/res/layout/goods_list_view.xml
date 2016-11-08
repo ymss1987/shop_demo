@@ -59,6 +59,7 @@
     <Button android:id="@+id/view_btn"
         android:layout_width="30dp"
         android:layout_height="15dp"
+        android:focusable="false"
         android:layout_marginRight="10dp"
         android:background="@drawable/asset_list_menu_icon"
         android:layout_alignParentRight="true"

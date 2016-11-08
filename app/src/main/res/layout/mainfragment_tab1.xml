@@ -160,16 +160,17 @@
     </LinearLayout>
 
     <ScrollView
-        android:background="#FFFFFF"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
             android:orientation="vertical"
+            android:background="#FFFFFF"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
         <LinearLayout
             android:gravity="center_vertical"
             android:orientation="horizontal"
+            android:paddingTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
@@ -222,14 +223,16 @@
                 android:background="@drawable/bg_edittext"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="20dp"
+                android:textSize="15sp"
                 android:layout_width="200dp"
-                android:layout_height="wrap_content" />
+                android:layout_height="30dp" />
             <Button
                 android:text="收款"
                 android:textColor="#4f9ff5"
-                android:background="@drawable/shape"
+                android:textSize="15sp"
+                android:background="@drawable/shape_button_style1"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="30dp" />
         </LinearLayout>
 
             <com.ymss.tinyshop.MyGridView
@@ -239,7 +242,10 @@
                 android:numColumns="4"
                 android:stretchMode="columnWidth"
                 ></com.ymss.tinyshop.MyGridView>
-
+<View
+    android:background="#e8e8e8"
+    android:layout_width="match_parent"
+    android:layout_height="10dp"/>
         </LinearLayout>
 
     </ScrollView>

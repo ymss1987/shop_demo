@@ -30,8 +30,13 @@ public class LoginActivity extends AppCompatActivity {
         userName = (EditText)findViewById(R.id.user_name);
         passWord = (EditText)findViewById(R.id.pass_word);
         mSharedPreferences = getSharedPreferences("TestSharedPreferences", 0);
-        userName.setText(mSharedPreferences.getString("userName",""));
-        passWord.setText(mSharedPreferences.getString("passWord",""));
+        String name = mSharedPreferences.getString("userName","");
+        String password = mSharedPreferences.getString("passWord","");
+        userName.setText(name);
+        passWord.setText(password);
+
+        userName.setSelection(name.length());
+        passWord.setSelection(password.length());
 
         Button btnLogin = (Button) findViewById(R.id.login_start);
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -46,6 +51,7 @@ public class LoginActivity extends AppCompatActivity {
                     mEditor.commit();
                     Intent intent =new Intent(LoginActivity.this,MainActivity.class);
                     startActivity(intent);
+                    LoginActivity.this.finish();
                 } else{
                     Toast.makeText(v.getContext(),"请输入用户名或者密码",Toast.LENGTH_LONG).show();
                 }

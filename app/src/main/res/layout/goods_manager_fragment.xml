@@ -81,6 +81,7 @@
         android:layout_width="match_parent"
         android:background="#ffffff"
         android:layout_height="0dp"
+        android:listSelector="@drawable/selector_goods_list_item"
         android:layout_weight="1"></ListView>
 
     <LinearLayout

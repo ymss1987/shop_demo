@@ -1,6 +1,9 @@
 package com.ymss.tinyshop;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,6 +14,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.ymss.adapter.ViewPagerAdapter;
+import com.ymss.config.CommonVar;
+import com.ymss.config.Constants;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -86,6 +91,14 @@ public class GuidActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void startLoginActivity(){
+
+        String key = CommonVar.getGuidPreferencesKey(this);
+        if (key!=null) {
+            SharedPreferences sp= getSharedPreferences(Constants.SharedPreferencesName, Activity.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sp.edit();
+            editor.putBoolean(key,true);
+            editor.commit();
+        }
         Intent loginIntent = new Intent(GuidActivity.this, LoginActivity.class);
         GuidActivity.this.startActivity(loginIntent);
         GuidActivity.this.finish();

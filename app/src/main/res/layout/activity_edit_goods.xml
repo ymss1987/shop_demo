@@ -1,0 +1,1214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_edit_goods"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.ymss.tinyshop.EditGoodsActivity">
+    <include layout="@layout/include_view_title"/>
+<ScrollView
+    android:background="#e1e1e1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<LinearLayout
+    android:background="#ffffff"
+    android:layout_marginTop="20dp"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <FrameLayout
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp">
+        <ImageView
+            android:background="#00ff00"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:layout_gravity="top|right"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/asset_delete_img"/>
+            <TextView
+                android:text="主图"
+                android:textColor="#ffffff"
+                android:gravity="center"
+                android:background="#88000000"
+                android:layout_gravity="bottom"
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+        </FrameLayout>
+        <FrameLayout
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp">
+            <ImageView
+                android:background="#00ff00"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+            <ImageView
+                android:layout_gravity="top|right"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/asset_delete_img"/>
+
+        </FrameLayout>
+        <FrameLayout
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp">
+            <ImageView
+                android:background="#00ff00"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+            <ImageView
+                android:layout_gravity="top|right"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/asset_delete_img"/>
+        </FrameLayout>
+        <FrameLayout
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp">
+            <ImageView
+                android:background="#00ff00"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+            <ImageView
+                android:layout_gravity="top|right"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/asset_delete_img"/>
+        </FrameLayout>
+        <FrameLayout
+            android:visibility="gone"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp">
+            <ImageView
+                android:background="#00ff00"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+            <ImageView
+                android:layout_gravity="top|right"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/asset_delete_img"/>
+        </FrameLayout>
+        <Button
+            android:background="@drawable/asset_add_img"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp">
+        </Button>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <FrameLayout
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp">
+            <ImageView
+                android:background="#00ff00"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+            <ImageView
+                android:layout_gravity="top|right"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/asset_delete_img"/>
+            <TextView
+                android:text="主图"
+                android:textColor="#ffffff"
+                android:gravity="center"
+                android:background="#88000000"
+                android:layout_gravity="bottom"
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+        </FrameLayout>
+        <FrameLayout
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp">
+            <ImageView
+                android:background="#00ff00"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+            <ImageView
+                android:layout_gravity="top|right"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/asset_delete_img"/>
+        </FrameLayout>
+        <FrameLayout
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp">
+            <ImageView
+                android:background="#00ff00"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+            <ImageView
+                android:layout_gravity="top|right"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/asset_delete_img"/>
+        </FrameLayout>
+        <FrameLayout
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp">
+            <ImageView
+                android:background="#00ff00"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+            <ImageView
+                android:layout_gravity="top|right"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/asset_delete_img"/>
+        </FrameLayout>
+        <FrameLayout
+            android:visibility="gone"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp">
+            <ImageView
+                android:background="#00ff00"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+            <ImageView
+                android:layout_gravity="top|right"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/asset_delete_img"/>
+        </FrameLayout>
+        <Button
+            android:background="@drawable/asset_add_img"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp">
+        </Button>
+    </LinearLayout>
+    <View
+        android:background="#e1e1e1"
+        android:layout_width="match_parent"
+        android:layout_height="15dp"></View>
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:background="#ffffff"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:layout_height="50dp">
+        <TextView
+            android:text="商品名称"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <View
+        android:background="#e1e1e1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"></View>
+    <RelativeLayout
+        android:orientation="horizontal"
+        android:background="#ffffff"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:layout_height="50dp">
+        <TextView
+            android:text="商品分类"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="未分类"
+            android:layout_toLeftOf="@+id/image_arrow0"
+            android:layout_marginLeft="140dp"
+            android:layout_marginRight="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/image_arrow0"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/component_singlerow_more_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <View
+        android:visibility="gone"
+        android:background="#e1e1e1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"></View>
+    <LinearLayout
+        android:visibility="gone"
+        android:orientation="horizontal"
+        android:background="#ffffff"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:background="#ffffff"
+            android:layout_width="match_parent"
+            android:gravity="center_vertical"
+            android:layout_height="50dp">
+            <TextView
+                android:text="规格名称"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+            <View
+                android:background="#e1e1e1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"></View>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:background="#ffffff"
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:layout_height="50dp">
+                <TextView
+                    android:text="售价（¥）"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <View
+                android:background="#e1e1e1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"></View>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:background="#ffffff"
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:layout_height="50dp">
+                <TextView
+                    android:text="库存"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+        <View
+            android:background="#e1e1e1"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"></View>
+        <ImageView
+            android:src="@drawable/asset_st_delete"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+    <View
+        android:visibility="gone"
+        android:background="#e1e1e1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"></View>
+    <LinearLayout
+        android:visibility="gone"
+        android:orientation="horizontal"
+        android:background="#ffffff"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:background="#ffffff"
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:layout_height="50dp">
+                <TextView
+                    android:text="规格名称"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <View
+                android:background="#e1e1e1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"></View>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:background="#ffffff"
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:layout_height="50dp">
+                <TextView
+                    android:text="售价（¥）"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <View
+                android:background="#e1e1e1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"></View>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:background="#ffffff"
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:layout_height="50dp">
+                <TextView
+                    android:text="库存"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+        <View
+            android:background="#e1e1e1"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"></View>
+        <ImageView
+            android:src="@drawable/asset_st_delete"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+    <View
+        android:visibility="gone"
+        android:background="#e1e1e1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"></View>
+    <LinearLayout
+        android:visibility="gone"
+        android:orientation="horizontal"
+        android:background="#ffffff"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:background="#ffffff"
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:layout_height="50dp">
+                <TextView
+                    android:text="规格名称"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <View
+                android:background="#e1e1e1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"></View>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:background="#ffffff"
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:layout_height="50dp">
+                <TextView
+                    android:text="售价（¥）"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <View
+                android:background="#e1e1e1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"></View>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:background="#ffffff"
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:layout_height="50dp">
+                <TextView
+                    android:text="库存"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+        <View
+            android:background="#e1e1e1"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"></View>
+        <ImageView
+            android:src="@drawable/asset_st_delete"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+    <View
+        android:visibility="gone"
+        android:background="#e1e1e1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"></View>
+    <LinearLayout
+        android:visibility="gone"
+        android:orientation="horizontal"
+        android:background="#ffffff"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:background="#ffffff"
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:layout_height="50dp">
+                <TextView
+                    android:text="规格名称"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <View
+                android:background="#e1e1e1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"></View>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:background="#ffffff"
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:layout_height="50dp">
+                <TextView
+                    android:text="售价（¥）"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <View
+                android:background="#e1e1e1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"></View>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:background="#ffffff"
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:layout_height="50dp">
+                <TextView
+                    android:text="库存"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+        <View
+            android:background="#e1e1e1"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"></View>
+        <ImageView
+            android:src="@drawable/asset_st_delete"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+    <View
+        android:visibility="gone"
+        android:background="#e1e1e1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"></View>
+    <LinearLayout
+        android:visibility="gone"
+        android:orientation="horizontal"
+        android:background="#ffffff"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:background="#ffffff"
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:layout_height="50dp">
+                <TextView
+                    android:text="规格名称"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <View
+                android:background="#e1e1e1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"></View>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:background="#ffffff"
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:layout_height="50dp">
+                <TextView
+                    android:text="售价（¥）"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <View
+                android:background="#e1e1e1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"></View>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:background="#ffffff"
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:layout_height="50dp">
+                <TextView
+                    android:text="库存"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+        <View
+            android:background="#e1e1e1"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"></View>
+        <ImageView
+            android:src="@drawable/asset_st_delete"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+    <View
+        android:visibility="gone"
+        android:background="#e1e1e1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"></View>
+    <LinearLayout
+        android:visibility="gone"
+        android:orientation="horizontal"
+        android:background="#ffffff"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:background="#ffffff"
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:layout_height="50dp">
+                <TextView
+                    android:text="规格名称"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <View
+                android:background="#e1e1e1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"></View>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:background="#ffffff"
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:layout_height="50dp">
+                <TextView
+                    android:text="售价（¥）"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <View
+                android:background="#e1e1e1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"></View>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:background="#ffffff"
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:layout_height="50dp">
+                <TextView
+                    android:text="库存"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+        <View
+            android:background="#e1e1e1"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"></View>
+        <ImageView
+            android:src="@drawable/asset_st_delete"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+    <View
+        android:visibility="gone"
+        android:background="#e1e1e1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"></View>
+    <LinearLayout
+        android:visibility="gone"
+        android:orientation="horizontal"
+        android:background="#ffffff"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:background="#ffffff"
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:layout_height="50dp">
+                <TextView
+                    android:text="规格名称"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <View
+                android:background="#e1e1e1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"></View>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:background="#ffffff"
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:layout_height="50dp">
+                <TextView
+                    android:text="售价（¥）"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <View
+                android:background="#e1e1e1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"></View>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:background="#ffffff"
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:layout_height="50dp">
+                <TextView
+                    android:text="库存"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+        <View
+            android:background="#e1e1e1"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"></View>
+        <ImageView
+            android:src="@drawable/asset_st_delete"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+    <View
+        android:visibility="gone"
+        android:background="#e1e1e1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"></View>
+    <LinearLayout
+        android:visibility="gone"
+        android:orientation="horizontal"
+        android:background="#ffffff"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:background="#ffffff"
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:layout_height="50dp">
+                <TextView
+                    android:text="规格名称"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <View
+                android:background="#e1e1e1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"></View>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:background="#ffffff"
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:layout_height="50dp">
+                <TextView
+                    android:text="售价（¥）"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <View
+                android:background="#e1e1e1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"></View>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:background="#ffffff"
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:layout_height="50dp">
+                <TextView
+                    android:text="库存"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+        <View
+            android:background="#e1e1e1"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"></View>
+        <ImageView
+            android:src="@drawable/asset_st_delete"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+    <View
+        android:visibility="gone"
+        android:background="#e1e1e1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"></View>
+    <LinearLayout
+        android:visibility="gone"
+        android:orientation="horizontal"
+        android:background="#ffffff"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:background="#ffffff"
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:layout_height="50dp">
+                <TextView
+                    android:text="规格名称"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <View
+                android:background="#e1e1e1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"></View>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:background="#ffffff"
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:layout_height="50dp">
+                <TextView
+                    android:text="售价（¥）"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <View
+                android:background="#e1e1e1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"></View>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:background="#ffffff"
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:layout_height="50dp">
+                <TextView
+                    android:text="库存"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+        <View
+            android:background="#e1e1e1"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"></View>
+        <ImageView
+            android:src="@drawable/asset_st_delete"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+    <View
+        android:visibility="gone"
+        android:background="#e1e1e1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"></View>
+    <LinearLayout
+        android:visibility="gone"
+        android:orientation="horizontal"
+        android:background="#ffffff"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:background="#ffffff"
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:layout_height="50dp">
+                <TextView
+                    android:text="规格名称"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <View
+                android:background="#e1e1e1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"></View>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:background="#ffffff"
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:layout_height="50dp">
+                <TextView
+                    android:text="售价（¥）"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <View
+                android:background="#e1e1e1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"></View>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:background="#ffffff"
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:layout_height="50dp">
+                <TextView
+                    android:text="库存"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+        <View
+            android:background="#e1e1e1"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"></View>
+        <ImageView
+            android:src="@drawable/asset_st_delete"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <View
+        android:background="#e1e1e1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"></View>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:background="#ffffff"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="50dp">
+        <ImageView
+            android:src="@drawable/asset_st_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="添加商品规格"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>
+    <View
+        android:background="#e1e1e1"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"></View>
+    <LinearLayout
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="horizontal"
+        android:background="#ffffff"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:layout_height="50dp">
+        <TextView
+            android:text="运费"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <View
+        android:background="#e1e1e1"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"></View>
+    <RelativeLayout
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="horizontal"
+        android:background="#ffffff"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:layout_height="50dp">
+        <TextView
+            android:text="图文详情"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="已添加"
+            android:layout_toLeftOf="@+id/image_arrow1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/image_arrow1"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/component_singlerow_more_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <View
+        android:background="#e1e1e1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"></View>
+    <RelativeLayout
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="#ffffff"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:layout_height="50dp">
+        <TextView
+            android:text="平台分类"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_toLeftOf="@+id/image_arrow2"
+            android:text="其它/其它/其它"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/image_arrow2"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/component_singlerow_more_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:padding="20dp"
+        android:orientation="horizontal"
+        android:background="#e1e1e1"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:weightSum="2"
+        android:layout_height="100dp">
+        <Button
+            android:text="删除"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:background="#4A9DF8"
+            android:layout_marginRight="10dp"
+            android:layout_height="wrap_content" />
+        <Button
+            android:text="下架"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:background="#4A9DF8"
+            android:layout_marginLeft="10dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <View
+        android:background="#e1e1e1"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"></View>
+    </LinearLayout>
+</ScrollView>
+</LinearLayout>

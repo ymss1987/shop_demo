@@ -19,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ymss.tinyshop.GoodsMorePopWindow;
 import com.ymss.tinyshop.R;
@@ -71,6 +72,7 @@ public class GoodsManagerTab1Fragment extends Fragment implements View.OnClickLi
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Log.v("MyListView4-click", (String)mData.get(position).get("title"));
+                Toast.makeText(mActivity,(String)mData.get(position).get("title"),Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -387,7 +389,7 @@ public class GoodsManagerTab1Fragment extends Fragment implements View.OnClickLi
                 @Override
                 public void onClick(View v) {
                     //showInfo(Integer.parseInt(v.getTag().toString()));
-                    GoodsMorePopWindow morePopWindow = new GoodsMorePopWindow(mActivity);
+                    GoodsMorePopWindow morePopWindow = new GoodsMorePopWindow(mActivity,v.getLeft(),v.getRight(),v.getTop(),v.getBottom());
                     morePopWindow.showPopupWindow(v);
                 }
             });

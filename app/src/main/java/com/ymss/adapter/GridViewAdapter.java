@@ -75,6 +75,9 @@ public class GridViewAdapter extends BaseAdapter {
 		holder.textview.setText(numberList.get(position).get("text").toString());
 		holder.imageview.setBackgroundResource(Integer.valueOf(numberList.get(position).get("image").toString()));
 		holder.position = position;
+		if (position>3){
+			holder.textview.setTextColor(Color.parseColor("#e1e1e1"));
+		}
 		convertView.setOnTouchListener(onTouchListener);
 		convertView.setOnClickListener(new View.OnClickListener() {
 			@Override
