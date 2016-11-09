@@ -26,18 +26,20 @@
         android:textColor="#ffffff"
         android:textSize="20dp"
         android:layout_height="50dp" />
-    <ImageView
-        android:id="@+id/title_img"
+    <ImageButton
+        android:id="@+id/title_imgback"
         android:gravity="center"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:padding="10dp"
+        android:background="#4A9DF8"
         android:src = "@drawable/component_header_back_btn"
-        android:layout_width="wrap_content"
+        android:layout_width="50dp"
         android:layout_height="50dp" />
     <TextView
-        android:layout_toRightOf="@id/title_img"
+        android:id="@+id/title_txtback"
+        android:layout_toRightOf="@id/title_imgback"
+        android:layout_marginLeft="-10dp"
         android:text="首页"
-        android:gravity="center"
+        android:gravity="center_vertical"
         android:textColor="#ffffff"
         android:textSize="18dp"
         android:layout_width="wrap_content"
@@ -83,18 +85,18 @@
         <TextView
             android:id="@+id/selling"
             android:text="销售中"
-            android:textSize="20dp"
+            android:textSize="15sp"
             android:layout_weight="1"
-            android:textColor="#d7d7d7"
+            android:textColor="#a0a0a0"
             android:layout_width="0dp"
             android:gravity="center"
             android:layout_height="match_parent" />
         <TextView
             android:id="@+id/sold_out"
             android:text="已下架"
-            android:textSize="20dp"
+            android:textSize="15sp"
             android:gravity="center"
-            android:textColor="#d7d7d7"
+            android:textColor="#a0a0a0"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="match_parent" />
@@ -126,13 +128,13 @@
             android:gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="50dp">
-            <ImageView
+            <ImageButton
                 android:id="@+id/title_back"
                 android:gravity="center"
-                android:layout_marginRight="15dp"
-                android:layout_marginLeft="10dp"
+                android:padding="10dp"
+                android:background="#4A9DF8"
                 android:src = "@drawable/component_header_back_btn"
-                android:layout_width="wrap_content"
+                android:layout_width="50dp"
                 android:layout_height="match_parent" />
 
             <LinearLayout
@@ -160,7 +162,7 @@
             <TextView
                 android:id="@+id/search_start"
                 android:layout_width="0dp"
-                android:background="#009966"
+                android:background="#4a9df8"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="搜索"

@@ -2,6 +2,7 @@ package com.ymss.tinyshop;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
@@ -50,10 +51,25 @@ public class GoodsManagerActivity extends FragmentActivity implements View.OnCli
     private LinearLayout mSearchTitle;
     private EditText mSearchEdit;
 
+    private ImageView title_imgback;
+    private TextView title_txtback;
+    private LinearLayout searchTitle;
+    private ImageView title_back;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_goods_manager);
+        title_imgback = (ImageView)findViewById(R.id.title_imgback);
+        title_txtback = (TextView) findViewById(R.id.title_txtback);
+        title_imgback.setOnClickListener(this);
+        title_txtback.setOnClickListener(this);
+
+        title_back = (ImageView)findViewById(R.id.title_back);
+        title_back.setOnClickListener(this);
+        searchTitle = (LinearLayout) findViewById(R.id.searchTitle);
+
         init();
 
     }
@@ -91,7 +107,7 @@ public class GoodsManagerActivity extends FragmentActivity implements View.OnCli
 
     private void startSearch(){
 
-        setSearchViewHide();
+        setSearchViewHide(true);
         mSearchEdit.requestFocus();
         InputMethodManager inputManager = (InputMethodManager) mSearchEdit.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
         inputManager.showSoftInput(mSearchEdit, 0);
@@ -102,8 +118,12 @@ public class GoodsManagerActivity extends FragmentActivity implements View.OnCli
 
     }
 
-    public static void setSearchViewHide(){
-        mSearch.setVisibility(View.GONE);
+    public static void setSearchViewHide(boolean isHide){
+        if (isHide == true) {
+            mSearch.setVisibility(View.GONE);
+        }else{
+            mSearch.setVisibility(View.VISIBLE);
+        }
 
     }
 
@@ -122,6 +142,7 @@ public class GoodsManagerActivity extends FragmentActivity implements View.OnCli
                 fragmentsList));
         viewPager.setCurrentItem(0);
         viewPager.setOnPageChangeListener(this);
+        tab1Tv.setTextColor(Color.parseColor("#4a9df8"));
     }
 
     @Override
@@ -129,12 +150,30 @@ public class GoodsManagerActivity extends FragmentActivity implements View.OnCli
         switch (v.getId()) {
             case R.id.selling:
                 viewPager.setCurrentItem(0);
+                tab1Tv.setTextColor(Color.parseColor("#4a9df8"));
+                tab2Tv.setTextColor(Color.parseColor("#a0a0a0"));
                 break;
             case R.id.sold_out:
                 viewPager.setCurrentItem(1);
+                tab1Tv.setTextColor(Color.parseColor("#a0a0a0"));
+                tab2Tv.setTextColor(Color.parseColor("#4a9df8"));
                 break;
             case R.id.search:
                 startSearch();
+                break;
+            case R.id.title_imgback:
+                finish();
+                break;
+            case R.id.title_txtback:
+                finish();
+                break;
+            case R.id.title_back:
+                searchTitle.setVisibility(View.GONE);
+                setSearchViewHide(false);
+                InputMethodManager imm = ( InputMethodManager ) v.getContext( ).getSystemService( Context.INPUT_METHOD_SERVICE );
+                if ( imm.isActive( ) ) {
+                    imm.hideSoftInputFromWindow( v.getApplicationWindowToken( ) , 0 );
+                }
                 break;
         }
     }

@@ -3,6 +3,7 @@ package com.ymss.tinyshop.Fragment;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -21,6 +22,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ymss.tinyshop.EditGoodsActivity;
 import com.ymss.tinyshop.GoodsMorePopWindow;
 import com.ymss.tinyshop.R;
 
@@ -54,6 +56,8 @@ public class GoodsManagerTab1Fragment extends Fragment implements View.OnClickLi
 
     private Activity mActivity;
 
+    private LinearLayout goods_add_new;
+
 
 
     @Override
@@ -61,6 +65,14 @@ public class GoodsManagerTab1Fragment extends Fragment implements View.OnClickLi
                              @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.goods_manager_fragment, null);
         mListView = (ListView)view.findViewById(R.id.goods_list);
+        goods_add_new = (LinearLayout)view.findViewById(R.id.goods_add_new);
+        goods_add_new.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), EditGoodsActivity.class);
+                startActivity(intent);
+            }
+        });
         mData = getData();
         mAdapter = new MyAdapter(this.getContext());
 
@@ -72,7 +84,16 @@ public class GoodsManagerTab1Fragment extends Fragment implements View.OnClickLi
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Log.v("MyListView4-click", (String)mData.get(position).get("title"));
-                Toast.makeText(mActivity,(String)mData.get(position).get("title"),Toast.LENGTH_SHORT).show();
+                //Toast.makeText(mActivity,(String)mData.get(position).get("title"),Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(view.getContext(), EditGoodsActivity.class);
+                intent.putExtra("title", mData.get(position).get("title").toString());
+                //map.put("stock", "销量:101  库存:99");
+                intent.putExtra("price", mData.get(position).get("price").toString());
+                intent.putExtra("img", Integer.parseInt(mData.get(position).get("img").toString()));
+                intent.putExtra("time",mData.get(position).get("time").toString());
+                intent.putExtra("sell", Integer.parseInt(mData.get(position).get("sell").toString()));
+                intent.putExtra("stock", Integer.parseInt(mData.get(position).get("stock").toString()));
+                startActivity(intent);
             }
         });
 
@@ -223,7 +244,7 @@ public class GoodsManagerTab1Fragment extends Fragment implements View.OnClickLi
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("title", "舞动的女孩");
         //map.put("stock", "销量:101  库存:99");
-        map.put("price", "¥18.00");
+        map.put("price", "18.00");
         map.put("img", 0);
         map.put("time","2012-12-12 12:30");
         map.put("sell", 99);
@@ -234,7 +255,7 @@ public class GoodsManagerTab1Fragment extends Fragment implements View.OnClickLi
         map = new HashMap<String, Object>();
         map.put("title", "八仙花");
         //map.put("stock", "销量:10  库存:91");
-        map.put("price", "¥12.00");
+        map.put("price", "12.00");
         map.put("img", R.drawable.shop640x640_01);
         map.put("time","2012-12-12 10:20");
         map.put("sell", 10);
@@ -244,7 +265,7 @@ public class GoodsManagerTab1Fragment extends Fragment implements View.OnClickLi
         map = new HashMap<String, Object>();
         map.put("title", "库存测试");
         //map.put("stock", "销量:0  库存:4");
-        map.put("price", "¥14.00");
+        map.put("price", "14.00");
         map.put("img", R.drawable.asset_logorectangle);
         map.put("time","2012-12-13 10:20");
         map.put("sell", 0);
@@ -254,7 +275,7 @@ public class GoodsManagerTab1Fragment extends Fragment implements View.OnClickLi
         map = new HashMap<String, Object>();
         map.put("title", "小猫咪");
         //map.put("stock", "销量:11  库存:92");
-        map.put("price", "¥0.10");
+        map.put("price", "0.10");
         map.put("img", R.drawable.shop640x640_01);
         map.put("time","2012-12-15 10:20");
         map.put("sell", 11);
@@ -264,7 +285,7 @@ public class GoodsManagerTab1Fragment extends Fragment implements View.OnClickLi
         map = new HashMap<String, Object>();
         map.put("title", "支付宝测试商品支付宝测试商品");
         //map.put("stock", "销量:14  库存:0");
-        map.put("price", "¥0.01");
+        map.put("price", "0.01");
         map.put("img", R.drawable.asset_logorectangle);
         map.put("time","2012-12-16 10:20");
         map.put("sell", 14);
@@ -274,7 +295,7 @@ public class GoodsManagerTab1Fragment extends Fragment implements View.OnClickLi
         map = new HashMap<String, Object>();
         map.put("title", "搞笑");
        // map.put("stock", "销量:2  库存:68");
-        map.put("price", "¥90.00");
+        map.put("price", "90.00");
         map.put("img", R.drawable.shop640x640_01);
         map.put("time","2012-12-17 10:20");
         map.put("sell", 2);
@@ -284,7 +305,7 @@ public class GoodsManagerTab1Fragment extends Fragment implements View.OnClickLi
         map = new HashMap<String, Object>();
         map.put("title", "红酒");
        // map.put("stock", "销量:0  库存:0");
-        map.put("price", "¥89.00");
+        map.put("price", "89.00");
         map.put("img", R.drawable.asset_logorectangle);
         map.put("time","2012-12-18 10:20");
         map.put("sell", 0);
@@ -294,7 +315,7 @@ public class GoodsManagerTab1Fragment extends Fragment implements View.OnClickLi
         map = new HashMap<String, Object>();
         map.put("title", "回锅肉");
         //map.put("stock", "销量:17  库存:0");
-        map.put("price", "¥12.00");
+        map.put("price", "12.00");
         map.put("img", R.drawable.asset_logorectangle);
         map.put("time","2012-12-20 10:20");
         map.put("sell", 17);
@@ -379,7 +400,7 @@ public class GoodsManagerTab1Fragment extends Fragment implements View.OnClickLi
 
             holder.img.setImageResource((Integer)mData.get(position).get("img"));
             holder.title.setText((String)mData.get(position).get("title"));
-            holder.price.setText((String)mData.get(position).get("price"));
+            holder.price.setText("¥"+(String)mData.get(position).get("price"));
             String stock = "销量:"+(String)mData.get(position).get("sell").toString()+"  库存:"+(String)mData.get(position).get("stock").toString();
             holder.stock.setText(stock);
 

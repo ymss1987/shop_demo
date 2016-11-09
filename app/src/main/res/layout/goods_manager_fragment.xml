@@ -20,7 +20,7 @@
             android:id="@+id/shown_time"
             android:text="添加时间"
             android:textColor="#a0a0a0"
-            android:textSize="15dp"
+            android:textSize="15sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
             <ImageView
@@ -40,7 +40,7 @@
                 android:id="@+id/shown_sell"
                 android:text="销量"
                 android:textColor="#a0a0a0"
-                android:textSize="15dp"
+                android:textSize="15sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <ImageView
@@ -59,7 +59,7 @@
             <TextView
                 android:id="@+id/shown_stock"
                 android:text="库存"
-                android:textSize="15dp"
+                android:textSize="15sp"
                 android:textColor="#a0a0a0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -85,6 +85,7 @@
         android:layout_weight="1"></ListView>
 
     <LinearLayout
+        android:id="@+id/goods_add_new"
         android:layout_marginTop="1dp"
         android:gravity="center"
         android:background="#ffffff"
@@ -96,7 +97,7 @@
             android:layout_height="wrap_content" />
         <TextView
             android:text="添加商品"
-            android:textSize="20dp"
+            android:textSize="15sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>

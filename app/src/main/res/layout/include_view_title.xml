@@ -5,23 +5,27 @@
     android:gravity="center_vertical"
     android:layout_height="50dp">
 <ImageButton
-    android:layout_marginLeft="20dp"
-    android:background="@drawable/component_header_back_btn"
-    android:layout_width="15dp"
-    android:layout_height="30dp" />
+    android:id="@+id/include_title_back"
+    android:padding="10dp"
+    android:gravity="center"
+    android:src="@drawable/component_header_back_btn"
+    android:background="#4A9DF8"
+    android:layout_width="50dp"
+    android:layout_height="50dp" />
     <TextView
         android:layout_weight="1"
         android:gravity="center"
         android:text="添加商品"
         android:textColor="#ffffff"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:background="#4A9DF8"
         android:layout_width="0dp"
         android:layout_height="match_parent" />
     <Button
+        android:id="@+id/include_title_ok"
         android:text="上架"
         android:textColor="#ffffff"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:gravity="center"
         android:layout_marginRight="10dp"
         android:background="#4A9DF8"
