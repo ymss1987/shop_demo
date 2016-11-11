@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.PopupWindow;
 
+import com.ymss.utility.ViewTools;
+
 /**
  * Created by adminstrator on 2016/11/1.
  */
@@ -16,23 +18,7 @@ import android.widget.PopupWindow;
 public class GoodsMorePopWindow extends PopupWindow {
     private View conentView;
 
-    /**
-     * 根据手机的分辨率从 dp 的单位 转成为 px(像素)
-     */
-    public static int dip2px(Context context, float dpValue) {
-        final float scale = context.getResources().getDisplayMetrics().density;
-        return (int) (dpValue * scale + 0.5f);
-    }
-
-    /**
-     * 根据手机的分辨率从 px(像素) 的单位 转成为 dp
-     */
-    public static int px2dip(Context context, float pxValue) {
-        final float scale = context.getResources().getDisplayMetrics().density;
-        return (int) (pxValue / scale + 0.5f);
-    }
-
-    public GoodsMorePopWindow(final Activity context, int left, int right, int top, int bottom) {
+    public GoodsMorePopWindow(final Context context, int left, int right, int top, int bottom) {
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         conentView = inflater.inflate(R.layout.popwindow_goods_more, null);
@@ -64,9 +50,9 @@ public class GoodsMorePopWindow extends PopupWindow {
             //this.showAsDropDown(parent, parent.getLayoutParams().width , 18);
             int[] location = new int[2];
             parent.getLocationOnScreen(location);
-            int off = dip2px(parent.getContext(), 160);
+            int off = ViewTools.dip2px(parent.getContext(), 160);
             int off1= parent.getWidth();
-            int off2 = dip2px(parent.getContext(), 50);
+            int off2 = ViewTools.dip2px(parent.getContext(), 50);
             this.showAtLocation(parent, Gravity.NO_GRAVITY, location[0]-off-off1, location[1]-off2);
         } else {
             this.dismiss();

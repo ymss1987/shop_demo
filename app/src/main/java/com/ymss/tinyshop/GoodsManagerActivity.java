@@ -1,5 +1,6 @@
 package com.ymss.tinyshop;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
@@ -53,8 +54,13 @@ public class GoodsManagerActivity extends FragmentActivity implements View.OnCli
 
     private ImageView title_imgback;
     private TextView title_txtback;
+    private TextView title_txtcancel;
+
     private LinearLayout searchTitle;
     private ImageView title_back;
+    private ImageView title_menu;
+
+    private Activity mActivity;
 
 
     @Override
@@ -65,10 +71,17 @@ public class GoodsManagerActivity extends FragmentActivity implements View.OnCli
         title_txtback = (TextView) findViewById(R.id.title_txtback);
         title_imgback.setOnClickListener(this);
         title_txtback.setOnClickListener(this);
+        title_txtcancel = (TextView) findViewById(R.id.title_txtcancel);
+        title_txtcancel.setOnClickListener(this);
+
+        title_menu = (ImageView)findViewById(R.id.title_menu);
+        title_menu.setOnClickListener(this);
 
         title_back = (ImageView)findViewById(R.id.title_back);
         title_back.setOnClickListener(this);
         searchTitle = (LinearLayout) findViewById(R.id.searchTitle);
+
+        mActivity = this;
 
         init();
 
@@ -170,10 +183,17 @@ public class GoodsManagerActivity extends FragmentActivity implements View.OnCli
             case R.id.title_back:
                 searchTitle.setVisibility(View.GONE);
                 setSearchViewHide(false);
-                InputMethodManager imm = ( InputMethodManager ) v.getContext( ).getSystemService( Context.INPUT_METHOD_SERVICE );
+                InputMethodManager imm = ( InputMethodManager ) v.getContext().getSystemService( Context.INPUT_METHOD_SERVICE );
                 if ( imm.isActive( ) ) {
                     imm.hideSoftInputFromWindow( v.getApplicationWindowToken( ) , 0 );
                 }
+                break;
+            case R.id.title_menu:
+                GoodsMenuPopWindow menuPopWindow = new GoodsMenuPopWindow(mActivity,v.getLeft(),v.getRight(),v.getTop(),v.getBottom());
+                menuPopWindow.showPopupWindow(v);
+                break;
+            case R.id.title_txtcancel:
+                setEnterBatchManager(false);
                 break;
         }
     }
@@ -201,6 +221,29 @@ public class GoodsManagerActivity extends FragmentActivity implements View.OnCli
 
     @Override
     public void onPageSelected(int arg0) {
+        if (arg0 ==0){
+            tab1Tv.setTextColor(Color.parseColor("#4a9df8"));
+            tab2Tv.setTextColor(Color.parseColor("#a0a0a0"));
+        }else{
+            tab1Tv.setTextColor(Color.parseColor("#a0a0a0"));
+            tab2Tv.setTextColor(Color.parseColor("#4a9df8"));
+        }
+    }
+
+    public void setEnterBatchManager(boolean isBatch){
+        if (isBatch == true){
+            title_imgback.setVisibility(View.GONE);
+            title_txtback.setVisibility(View.GONE);
+            title_txtcancel.setVisibility(View.VISIBLE);
+            title_menu.setVisibility(View.GONE);
+        }else{
+            title_txtcancel.setVisibility(View.GONE);
+            title_imgback.setVisibility(View.VISIBLE);
+            title_txtback.setVisibility(View.VISIBLE);
+            title_menu.setVisibility(View.VISIBLE);
+        }
+        GoodsManagerTab1Fragment tab = (GoodsManagerTab1Fragment)fragmentsList.get(0);
+        tab.setEnterBatchManager(isBatch);
     }
 
 }

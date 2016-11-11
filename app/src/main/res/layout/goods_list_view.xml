@@ -2,10 +2,21 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:gravity="center_vertical"
-    android:paddingTop="15dp"
     android:paddingLeft="15dp"
+    android:paddingTop="15dp"
     android:paddingBottom="15dp"
-    android:layout_height="100dp">
+    android:layout_height="90dp">
+
+    <CheckBox
+        android:visibility="gone"
+        android:id="@+id/goods_checkbox"
+        android:checked="false"
+        android:focusable="false"
+        android:button="@drawable/selector_goods_bratch_ckb"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <!--<ImageView android:id="@+id/img"
         android:background="@drawable/goods_image_shape"
@@ -15,14 +26,16 @@
     <com.ymss.view.SimpleTagImageView
         xmlns:simple="http://schemas.android.com/apk/res-auto"
         android:id="@+id/img"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        simple:simple_tag_textSize="18sp"
+        android:layout_toRightOf="@id/goods_checkbox"
+        android:layout_centerVertical="true"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        simple:simple_tag_textSize="10sp"
         simple:simple_corner_distance="30dp"
-        simple:simple_tag_text="AB"
+        simple:simple_tag_text="供货"
         simple:simple_tag_background_color="#af27CDC0"
         simple:simple_tag_orientation="left_bottom"
-        simple:simple_tag_width="20dip"
+        simple:simple_tag_width="15dip"
         simple:simple_tag_textColor="@android:color/white"
         simple:simple_tag_enable="true"
         simple:simple_tag_round_radius="10dp"
@@ -42,8 +55,8 @@
         <TextView android:id="@+id/price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
             android:textColor="#FF0000"
             android:textSize="15sp" />
 

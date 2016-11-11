@@ -5,9 +5,11 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,9 +18,12 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -57,6 +62,14 @@ public class GoodsManagerTab1Fragment extends Fragment implements View.OnClickLi
     private Activity mActivity;
 
     private LinearLayout goods_add_new;
+    private RelativeLayout goods_bratch_tool;
+    private SwipeRefreshLayout swipeRefreshLayout;
+
+    private View convertListItem;
+    private boolean isListBatch = false;
+    private boolean isCheckboxSelect = false;
+
+    private CheckBox goods_tool_ckb;
 
 
 
@@ -73,6 +86,66 @@ public class GoodsManagerTab1Fragment extends Fragment implements View.OnClickLi
                 startActivity(intent);
             }
         });
+
+        goods_tool_ckb = (CheckBox) view.findViewById(R.id.goods_tool_ckb);
+        goods_tool_ckb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked==true){
+                  /*  for (int i=0;i<mListView.getChildCount();i++){
+                        CheckBox ckb = (CheckBox)mListView.getChildAt(i).findViewById(R.id.goods_checkbox);
+                        ckb.setChecked(true);
+                        //ckb.setBackgroundResource(R.drawable.asset_list_select_icon);
+                    }
+                    mListView.invalidate();*/
+                    isCheckboxSelect = true;
+                    mAdapter.notifyDataSetChanged();
+                }else{
+                   /* for (int i=0;i<mListView.getChildCount();i++){
+                        CheckBox ckb = (CheckBox)mListView.getChildAt(i).findViewById(R.id.goods_checkbox);
+                        ckb.setChecked(false);
+                        //ckb.setBackgroundResource(R.drawable.asset_list_unselect_icon);
+                    }
+                    mListView.invalidate();*/
+                    isCheckboxSelect = false;
+                    mAdapter.notifyDataSetChanged();
+                }
+            }
+        });
+
+        goods_bratch_tool = (RelativeLayout) view.findViewById(R.id.goods_bratch_tool);
+
+        swipeRefreshLayout = (SwipeRefreshLayout)view.findViewById(R.id.swipe_container);
+        swipeRefreshLayout.setColorSchemeResources(R.color.colorRed, R.color.colorGreen, R.color.colorBlue);
+        swipeRefreshLayout.setSize(SwipeRefreshLayout.LARGE);
+        //swipeRefreshLayout.setProgressBackgroundColor(R.color.swipe_background_color);
+        swipeRefreshLayout.setProgressViewEndTarget(true, 100);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                Toast.makeText(mActivity,"下拉刷新开始",Toast.LENGTH_SHORT).show();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Map<String, Object> map = new HashMap<String, Object>();
+                        map.put("title", "下拉刷新增加信息");
+                        //map.put("stock", "销量:101  库存:99");
+                        map.put("price", "18.00");
+                        map.put("img", R.drawable.shop640x640_02);
+                        map.put("time","2012-12-12 12:30");
+                        map.put("sell", 99);
+                        map.put("stock", 101);
+                        mData.add(map);
+                        swipeRefreshLayout.setRefreshing(false);
+                        mAdapter.notifyDataSetChanged();
+                        Toast.makeText(mActivity,"下拉刷新完成",Toast.LENGTH_SHORT).show();
+                    }
+                },3000);
+
+            }
+        });
+
+
         mData = getData();
         mAdapter = new MyAdapter(this.getContext());
 
@@ -84,16 +157,29 @@ public class GoodsManagerTab1Fragment extends Fragment implements View.OnClickLi
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Log.v("MyListView4-click", (String)mData.get(position).get("title"));
-                //Toast.makeText(mActivity,(String)mData.get(position).get("title"),Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(view.getContext(), EditGoodsActivity.class);
-                intent.putExtra("title", mData.get(position).get("title").toString());
-                //map.put("stock", "销量:101  库存:99");
-                intent.putExtra("price", mData.get(position).get("price").toString());
-                intent.putExtra("img", Integer.parseInt(mData.get(position).get("img").toString()));
-                intent.putExtra("time",mData.get(position).get("time").toString());
-                intent.putExtra("sell", Integer.parseInt(mData.get(position).get("sell").toString()));
-                intent.putExtra("stock", Integer.parseInt(mData.get(position).get("stock").toString()));
-                startActivity(intent);
+                if (isListBatch == true){
+                    CheckBox viewCkb = (CheckBox)view.findViewById(R.id.goods_checkbox);
+                    if (viewCkb!=null){
+                        if (viewCkb.isChecked()==true){
+                            viewCkb.setChecked(false);
+                            //viewCkb.setBackgroundResource(R.drawable.asset_list_unselect_icon);
+                        }else{
+                            viewCkb.setChecked(true);
+                            //viewCkb.setBackgroundResource(R.drawable.asset_list_select_icon);
+                        }
+                    }
+                }else {
+                    //Toast.makeText(mActivity,(String)mData.get(position).get("title"),Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(view.getContext(), EditGoodsActivity.class);
+                    intent.putExtra("title", mData.get(position).get("title").toString());
+                    //map.put("stock", "销量:101  库存:99");
+                    intent.putExtra("price", mData.get(position).get("price").toString());
+                    intent.putExtra("img", Integer.parseInt(mData.get(position).get("img").toString()));
+                    intent.putExtra("time", mData.get(position).get("time").toString());
+                    intent.putExtra("sell", Integer.parseInt(mData.get(position).get("sell").toString()));
+                    intent.putExtra("stock", Integer.parseInt(mData.get(position).get("stock").toString()));
+                    startActivity(intent);
+                }
             }
         });
 
@@ -256,7 +342,7 @@ public class GoodsManagerTab1Fragment extends Fragment implements View.OnClickLi
         map.put("title", "八仙花");
         //map.put("stock", "销量:10  库存:91");
         map.put("price", "12.00");
-        map.put("img", R.drawable.shop640x640_01);
+        map.put("img", R.drawable.shop640x640_02);
         map.put("time","2012-12-12 10:20");
         map.put("sell", 10);
         map.put("stock", 91);
@@ -341,9 +427,35 @@ public class GoodsManagerTab1Fragment extends Fragment implements View.OnClickLi
 
     }
 
+    public void setEnterBatchManager(boolean isBatch){
+        if (convertListItem!=null) {
+            ViewHolder holder = (ViewHolder)convertListItem.getTag();
+            if (isBatch == true) {
+                isListBatch = true;
+                /*for (int i=0;i<mListView.getChildCount();i++){
+                    mListView.getChildAt(i).findViewById(R.id.goods_checkbox).setVisibility(View.VISIBLE);
+                }*/
+                goods_bratch_tool.setVisibility(View.VISIBLE);
+                goods_add_new.setVisibility(View.GONE);
+                mAdapter.notifyDataSetChanged();
+                //mListView.invalidate();
+            } else {
+                isListBatch = false;
+               /* for (int i=0;i<mListView.getChildCount();i++){
+                    mListView.getChildAt(i).findViewById(R.id.goods_checkbox).setVisibility(View.GONE);
+                }*/
+                goods_bratch_tool.setVisibility(View.GONE);
+                goods_add_new.setVisibility(View.VISIBLE);
+                mAdapter.notifyDataSetChanged();
+                //mListView.invalidate();
+            }
+        }
+    }
+
 
 
     public final class ViewHolder{
+        public CheckBox viewCkb;
         public ImageView img;
         public TextView title;
         public TextView price;
@@ -386,19 +498,33 @@ public class GoodsManagerTab1Fragment extends Fragment implements View.OnClickLi
 
                 holder=new ViewHolder();
                 convertView = mInflater.inflate(R.layout.goods_list_view, null);
+                convertListItem = convertView;
                 holder.img = (ImageView)convertView.findViewById(R.id.img);
                 holder.title = (TextView)convertView.findViewById(R.id.title);
                 holder.price = (TextView)convertView.findViewById(R.id.price);
                 holder.stock = (TextView)convertView.findViewById(R.id.stock);
                 holder.viewBtn = (Button)convertView.findViewById(R.id.view_btn);
+                holder.viewCkb = (CheckBox) convertView.findViewById(R.id.goods_checkbox);
+
                 convertView.setTag(holder);
 
             }else {
 
                 holder = (ViewHolder)convertView.getTag();
             }
+            if (isListBatch == true){
+                holder.viewCkb.setVisibility(View.VISIBLE);
+                if (isCheckboxSelect==true){
+                    holder.viewCkb.setChecked(true);
+                }else{
+                    holder.viewCkb.setChecked(false);
+                }
+            }else{
+                holder.viewCkb.setVisibility(View.GONE);
+            }
 
             holder.img.setImageResource((Integer)mData.get(position).get("img"));
+            //holder.img.setBackgroundResource((Integer)mData.get(position).get("img"));
             holder.title.setText((String)mData.get(position).get("title"));
             holder.price.setText("¥"+(String)mData.get(position).get("price"));
             String stock = "销量:"+(String)mData.get(position).get("sell").toString()+"  库存:"+(String)mData.get(position).get("stock").toString();

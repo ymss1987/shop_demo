@@ -45,9 +45,19 @@
         android:layout_width="wrap_content"
         android:layout_height="50dp" />
 
+        <TextView
+            android:id="@+id/title_txtcancel"
+            android:visibility="gone"
+            android:text="取消"
+            android:gravity="center"
+            android:textColor="#ffffff"
+            android:textSize="18dp"
+            android:layout_width="80dp"
+            android:layout_height="50dp" />
+
     <ImageView
         android:layout_alignParentRight="true"
-        android:id="@+id/title_exit"
+        android:id="@+id/title_menu"
         android:gravity="center"
         android:layout_marginRight="10dp"
         android:src = "@drawable/asset_title_menu_icon"

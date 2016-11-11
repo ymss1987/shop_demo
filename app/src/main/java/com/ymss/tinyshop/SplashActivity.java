@@ -30,7 +30,7 @@ public class SplashActivity extends AppCompatActivity {
                 }
                 SplashActivity.this.finish();
             }
-        }, 1000); //2000 for release
+        }, 500); //2000 for release
 
     }
 

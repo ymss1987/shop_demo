@@ -363,6 +363,10 @@ public class SimpleTagImageView extends ImageView {
             mBitmapPaint.setDither(false);
             mBitmapPaint.setAntiAlias(true);
             mBitmapPaint.setShader(mBitmapShader);
+        }else{
+            mBitmapPaint.setDither(false);
+            mBitmapPaint.setAntiAlias(true);
+            mBitmapPaint.setShader(mBitmapShader);
         }
     }
 
