@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="wrap_content"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_marginRight="10dp"
+        android:layout_gravity="right"
+        android:src="@drawable/component_menu_images_toparrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:orientation="vertical" android:layout_width="wrap_content"
+        android:background="@drawable/shape_popwindow_goods_more"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/layout_batch_manager"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp">
+            <ImageView
+                android:id="@+id/image_batch_manager"
+                android:src="@drawable/asset_batch_manage_icon"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/text_batch_manager"
+                android:text="批量管理"
+                android:textColor="#ffffff"
+                android:textSize="15sp"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <View
+            android:background="#fefefe"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"/>
+        <LinearLayout
+            android:id="@+id/layout_class_manager"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp">
+            <ImageView
+                android:id="@+id/image_class_manager"
+                android:src="@drawable/asset_class_manage_icon"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/text_class_manager"
+                android:text="分类管理"
+                android:textColor="#ffffff"
+                android:textSize="15sp"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        </LinearLayout>
+
+
+
+</LinearLayout>
