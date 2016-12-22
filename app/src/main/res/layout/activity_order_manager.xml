@@ -20,7 +20,11 @@
             android:textColor="#ffffff"
             android:textSize="20dp"
             android:layout_height="50dp" />
-        <ImageButton
+        <LinearLayout
+            android:id="@+id/title_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        <ImageView
             android:id="@+id/title_imgback"
             android:gravity="center"
             android:padding="10dp"
@@ -38,6 +42,7 @@
             android:textSize="18dp"
             android:layout_width="wrap_content"
             android:layout_height="50dp" />
+        </LinearLayout>
     </RelativeLayout>
 
     <LinearLayout

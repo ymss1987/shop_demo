@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_select_connect"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#f3f3f3"
+    tools:context="com.ymss.tinyshop.SelectConnectActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:background="#4a9df8"
+            android:gravity="center"
+            android:text="请选择连接方式"
+            android:textColor="#ffffff"
+            android:textSize="20dp"
+            android:layout_height="50dp" />
+        <LinearLayout
+            android:id="@+id/title_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/title_imgback"
+                android:gravity="center"
+                android:padding="10dp"
+                android:background="#4A9DF8"
+                android:src = "@drawable/component_header_back_btn"
+                android:layout_width="50dp"
+                android:layout_height="50dp" />
+            <TextView
+                android:id="@+id/title_txtback"
+                android:layout_toRightOf="@id/title_imgback"
+                android:layout_marginLeft="-10dp"
+                android:text="退出"
+                android:gravity="center_vertical"
+                android:textColor="#ffffff"
+                android:textSize="18dp"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        android:background="#ffffff"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    
+    <RelativeLayout
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="80dp">
+       <ImageView
+           android:id="@+id/icon_image1"
+           android:src="@drawable/asset_phonebig"
+           android:layout_width="40dp"
+           android:layout_height="40dp" />
+        <TextView
+            android:id="@+id/text_desc1"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/icon_image1"
+            android:text="请选择连接方式"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/icon_image1"
+            android:layout_below="@id/text_desc1"
+            android:text="系统会默认记录本次选择，以便下次使用"
+            android:textColor="#888888"
+            android:textSize="14sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+        <View
+            android:background="#f3f3f3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+        <LinearLayout
+            android:background="@drawable/selector_goods_list_item"
+            android:id="@+id/connect_nfc"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+        <ImageView
+            android:src="@drawable/asset_phonenfc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+            <TextView
+                android:layout_marginLeft="15dp"
+                android:text="手机支持NFC"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <Button
+                android:text="(帮助)"
+                android:padding="0dp"
+                android:textSize="14sp"
+                android:textColor="#4a9df8"
+                android:background="@null"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <View
+            android:background="#f3f3f3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+        <LinearLayout
+            android:background="@drawable/selector_goods_list_item"
+            android:id="@+id/connect_dinghe"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+            <ImageView
+                android:src="@drawable/asset_dinghe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_marginLeft="15dp"
+                android:text="鼎和"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="(读卡器)"
+                android:layout_marginLeft="5dp"
+                android:textSize="14sp"
+                android:textColor="#888888"
+                android:background="@null"
+                android:focusable="false"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <View
+            android:background="#f3f3f3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+        <LinearLayout
+            android:background="@drawable/selector_goods_list_item"
+            android:id="@+id/connect_huada"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+            <ImageView
+                android:src="@drawable/asset_huada"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_marginLeft="15dp"
+                android:text="华大"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="(有液晶屏读卡器)"
+                android:layout_marginLeft="5dp"
+                android:textSize="14sp"
+                android:textColor="#888888"
+                android:background="@null"
+                android:focusable="false"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/connect_phone"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="15dp"
+        android:background="#ffffff"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="80dp">
+        <ImageView
+            android:src="@drawable/asset_phone"
+            android:layout_width="40dp"
+            android:layout_height="40dp" />
+        <TextView
+            android:layout_marginLeft="15dp"
+            android:text="报手机号收款"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</LinearLayout>

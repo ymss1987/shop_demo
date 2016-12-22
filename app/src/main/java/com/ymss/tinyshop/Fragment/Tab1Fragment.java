@@ -15,6 +15,7 @@ import com.ymss.adapter.GridViewAdapter;
 import com.ymss.keyboard.KeyboardTool;
 import com.ymss.tinyshop.GoodsManagerActivity;
 import com.ymss.tinyshop.MainActivity;
+import com.ymss.tinyshop.OrderManagerActivity;
 import com.ymss.tinyshop.R;
 import com.ymss.tinyshop.SelectShopActivity;
 
@@ -45,7 +46,10 @@ public class Tab1Fragment extends Fragment implements View.OnClickListener {
             if (position ==0){
                 Intent intent = new Intent(view.getContext(), GoodsManagerActivity.class);
                 startActivity(intent);
-            }else {
+            } if(position==1){
+                Intent intent = new Intent(view.getContext(), OrderManagerActivity.class);
+                startActivity(intent);
+            }  else{
                 Toast.makeText(view.getContext(), data_list.get(position).get("text").toString(), Toast.LENGTH_SHORT).show();
             }
         }

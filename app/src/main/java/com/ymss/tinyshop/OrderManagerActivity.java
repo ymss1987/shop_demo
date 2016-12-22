@@ -29,9 +29,11 @@ public class OrderManagerActivity extends AppCompatActivity implements View.OnCl
     private LinearLayout titleextra;
     private RecyclerView orderRecycler;
     private RelativeLayout mNoContent;
+    private LinearLayout mTitleBack;
 
     private LinearLayout oldFocus = null;
-    private List<Map<String, Object>> mData = new ArrayList<>();;
+    private List<Map<String, Object>> mData = new ArrayList<>();
+    private NormalRecyclerViewAdapter mAdapter;
 
 
     @Override
@@ -43,6 +45,12 @@ public class OrderManagerActivity extends AppCompatActivity implements View.OnCl
         orderRecycler = (RecyclerView)findViewById(R.id.order_recycler);
         orderRecycler.setLayoutManager(new LinearLayoutManager(this));
         mNoContent = (RelativeLayout) findViewById(R.id.no_content);
+
+        mAdapter = new NormalRecyclerViewAdapter(this,mData);
+        orderRecycler.setAdapter(mAdapter);
+
+        mTitleBack = (LinearLayout)findViewById(R.id.title_back);
+        mTitleBack.setOnClickListener(this);
 
 
         underLine = findViewById(R.id.underline);
@@ -76,7 +84,8 @@ public class OrderManagerActivity extends AppCompatActivity implements View.OnCl
                 mNoContent.setVisibility(View.GONE);
                 orderRecycler.setVisibility(View.VISIBLE);
                 initData1();
-                orderRecycler.setAdapter(new NormalRecyclerViewAdapter(this,mData));
+                mAdapter.notifyDataSetChanged();
+                orderRecycler.scrollToPosition(0);
                 break;
             case R.id.order_refund:
                 setTextColor((LinearLayout)v, oldFocus);
@@ -92,7 +101,9 @@ public class OrderManagerActivity extends AppCompatActivity implements View.OnCl
                 mNoContent.setVisibility(View.GONE);
                 orderRecycler.setVisibility(View.VISIBLE);
                 initData2();
-                orderRecycler.setAdapter(new NormalRecyclerViewAdapter(this,mData));
+                //orderRecycler.setAdapter(new NormalRecyclerViewAdapter(this,mData));
+                mAdapter.notifyDataSetChanged();
+                orderRecycler.scrollToPosition(0);
                 break;
             case R.id.order_closed:
                 setTextColor((LinearLayout)v, oldFocus);
@@ -101,9 +112,13 @@ public class OrderManagerActivity extends AppCompatActivity implements View.OnCl
                 mNoContent.setVisibility(View.GONE);
                 orderRecycler.setVisibility(View.VISIBLE);
                 initData3();
-                orderRecycler.setAdapter(new NormalRecyclerViewAdapter(this,mData));
+                //orderRecycler.setAdapter(new NormalRecyclerViewAdapter(this,mData));
+                mAdapter.notifyDataSetChanged();
+                orderRecycler.scrollToPosition(0);
                 break;
-
+            case R.id.title_back:
+                finish();
+                break;
 
         }
 

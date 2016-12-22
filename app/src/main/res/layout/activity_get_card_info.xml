@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_get_card_info"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#418de1"
+    tools:context="com.ymss.tinyshop.GetCardInfoActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:background="#4a9df8"
+            android:gravity="center"
+            android:text="倍棒卡数据提取"
+            android:textColor="#ffffff"
+            android:textSize="20dp"
+            android:layout_height="50dp" />
+        <LinearLayout
+            android:id="@+id/title_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/title_imgback"
+                android:gravity="center"
+                android:padding="10dp"
+                android:background="#4A9DF8"
+                android:src = "@drawable/component_header_back_btn"
+                android:layout_width="50dp"
+                android:layout_height="50dp" />
+            <TextView
+                android:id="@+id/title_txtback"
+                android:layout_toRightOf="@id/title_imgback"
+                android:layout_marginLeft="-10dp"
+                android:text=""
+                android:gravity="center_vertical"
+                android:textColor="#ffffff"
+                android:textSize="18dp"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+
+
+    <LinearLayout
+        android:id="@+id/tip"
+        android:orientation="vertical"
+        android:layout_centerInParent="true"
+        android:background="@drawable/getcardinfo_tip_border"
+        android:gravity="center_horizontal"
+        android:layout_width="300dp"
+        android:layout_height="360dp">
+        <TextView
+            android:layout_marginTop="50dp"
+            android:text="请将倍棒卡贴于读卡器感应区"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:layout_marginTop="20dp"
+            android:src="@drawable/asset_nfccard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <com.ymss.view.CircleImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_above="@+id/tip"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="-35dp"
+        android:src="@drawable/head_new"
+        app:border_width="2dp"
+        app:border_color="#AAAAAA" />
+
+    <LinearLayout
+        android:layout_below="@id/tip"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/connect"
+            android:text="已连接：设备-华大"
+            android:textColor="#ffffff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/change_device"
+            android:layout_marginLeft="10dp"
+            android:paddingBottom="2dp"
+            android:textColor="#FFFFFF"
+            android:text="更换"
+            android:background="@drawable/bg_getcardinfo_changedevice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+
+
+</RelativeLayout>

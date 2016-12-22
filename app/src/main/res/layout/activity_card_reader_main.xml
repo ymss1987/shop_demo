@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_card_reader_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.ymss.tinyshop.CardReaderMainActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:background="#4a9df8"
+            android:gravity="center"
+            android:text="读卡器功能"
+            android:textColor="#ffffff"
+            android:textSize="20dp"
+            android:layout_height="50dp" />
+        <LinearLayout
+            android:id="@+id/title_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/title_imgback"
+                android:gravity="center"
+                android:padding="10dp"
+                android:background="#4A9DF8"
+                android:src = "@drawable/component_header_back_btn"
+                android:layout_width="50dp"
+                android:layout_height="50dp" />
+            <TextView
+                android:id="@+id/title_txtback"
+                android:layout_toRightOf="@id/title_imgback"
+                android:layout_marginLeft="-10dp"
+                android:text=""
+                android:gravity="center_vertical"
+                android:textColor="#ffffff"
+                android:textSize="18dp"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <TextView
+        android:text="执行状态显示"
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/shown_message"
+            android:background="#ffffff"
+            android:scrollbars = "vertical"
+            android:ellipsize="end"
+            android:textColor="#000000"
+            android:scrollbarStyle="insideInset"
+            android:layout_width="match_parent"
+            android:layout_height="160dp" />
+    <TextView
+        android:text="功能列表"
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+   <ListView
+       android:id="@+id/list_function"
+       android:background="#ffffff"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"></ListView>
+
+</LinearLayout>
