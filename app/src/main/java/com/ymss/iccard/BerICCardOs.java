@@ -2,11 +2,13 @@ package com.ymss.iccard;
 
 import android.annotation.SuppressLint;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
 import com.ymss.config.Constants;
+import com.ymss.utility.InnerTools;
 
 
 @SuppressLint("NewApi")
@@ -43,12 +45,15 @@ public class BerICCardOs implements BerbonCardReader.CardReaderCallback {
 	private PlainTextPasswordCallback mPlainTextPasswordCallback;
 	private SetDeviceBtNameCallback mSetDeviceBtNameCallback;
 
+	private BerIcNfcOs mNfcOS;
+
 
 	private BerICCardOs(Context context){
 		mContext = context;
 
 		mHuadaReader = new HuadaCardReader(context,this);
 		mDingheReader = new DingheCardReader(context, this);
+		mNfcOS = new BerIcNfcOs(context);
 	}
 
 	public static BerICCardOs getInstance(Context context){
@@ -62,12 +67,12 @@ public class BerICCardOs implements BerbonCardReader.CardReaderCallback {
 
 	public void setICCardConnectMode(int mode){
 		nICCardConnectMode = mode;
-		if (mode == 0){
+		if (mode == MODE_DINGHE){
 			mCardReader = mDingheReader;
-		}else if (mode == 2){
+		}else if (mode == MODE_HUADA){
 			mCardReader = mHuadaReader;
-		}else if (mode == 1){
-
+		}else if (mode == MODE_NFC){
+			mCardReader = null;
 		}else{
 			Log.e(LOGTAG,"setICCardConnectMode mode="+mode+" is error");
 		}
@@ -91,9 +96,49 @@ public class BerICCardOs implements BerbonCardReader.CardReaderCallback {
 	public boolean BerICCardDeviceIsSupport(){
 		if (mCardReader!=null){
 			return mCardReader.isDeviceSupportICCard();
+		}else if (nICCardConnectMode == MODE_NFC){
+			return mNfcOS.isSupporNfc();
 		}
      	return false;
     }
+
+	public boolean checkNFCisOpen(){
+		if (nICCardConnectMode == MODE_NFC && mNfcOS.isSupporNfc()) {
+			return mNfcOS.isNfcEnabled();
+		}
+		return false;
+	}
+
+	//设置nfc监听回调函数
+	public void setNFCNewTagListener(BerIcNfcOs.NewTagListenerCallback callback){
+		mNfcOS.setIsListen(true);
+		mNfcOS.setNewTagListener(callback);
+	}
+
+	//intent中是否包含tag，在Activity的onCreate和onNewIntent中调用
+	public void checkNfcNewTag(Intent intent){
+		if (nICCardConnectMode == MODE_NFC && mNfcOS.isSupporNfc()) {
+			mNfcOS.checkNewTag(intent);
+		}
+	}
+
+	//设置nfc监听开始，在Activity的onResume中调用
+	public boolean setNFCEnableReadMode(Activity activity, Class<?> cls){
+		if (nICCardConnectMode == MODE_NFC && mNfcOS.isSupporNfc()){
+			mNfcOS.enableReadMode(activity, cls);
+			return true;
+		}
+		return false;
+	}
+
+	//取消nfc监听，在Activity的onPause中调用
+	public boolean setNFCDisableReadMode(Activity activity){
+		if (nICCardConnectMode == MODE_NFC && mNfcOS.isSupporNfc()){
+			mNfcOS.disableReadMode(activity);
+			return true;
+		}
+		return false;
+	}
 
 	public void BerICCardSearchDevice(int mtimeoutMS, SearchDeviceCallback callback){
 		if (mCardReader!=null){
@@ -185,7 +230,18 @@ public class BerICCardOs implements BerbonCardReader.CardReaderCallback {
 //	}
 
 	public void BerICCardSendAPDU(final String data, SendAPDUCallback callback){
-		if (mCardReader!=null){
+		if (nICCardConnectMode == MODE_NFC){
+			if (mNfcOS.isSupporNfc()){
+				byte[] result = mNfcOS.sendCommand(InnerTools.HexStringToByteArray(data));
+				if (result!=null){
+					callback.onReceiveBerbonSendAPDU(0,"成功",InnerTools.ByteArrayToHexString(result));
+				}else{
+					callback.onReceiveBerbonSendAPDU(1,"nfc连接不存在或者发送异常",null);
+				}
+			}else{
+				callback.onReceiveBerbonSendAPDU(9,"手机不支持NFC",null);
+			}
+		} else if (mCardReader!=null){
 			mSendAPDUCallback = callback;
 			mCardReader.sendAPDU(data);
 		}else if (callback!=null){

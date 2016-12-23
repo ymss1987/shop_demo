@@ -15,8 +15,6 @@ import android.nfc.tech.NfcA;
 import android.os.Build;
 import android.support.annotation.Nullable;
 import android.util.Log;
-
-import com.ymss.tinyshop.MainActivity;
 import com.ymss.utility.InnerTools;
 
 import java.io.IOException;
@@ -30,46 +28,63 @@ public class BerIcNfcOs {
 	private IsoDep mIsoDep;
 	private NfcA mNfcA;
 	private MifareClassic mMifareClassic;
-	private Activity mCtx;
 	private boolean isListen;
 	private NfcAdapter mAdapter = null;
 	private Context mContext;
+	private NewTagListenerCallback mCallback;
+
+	public interface NewTagListenerCallback{
+		void newTagCallback(String tag);
+	}
 	
-	public BerIcNfcOs(Activity ctx){
-		this.mCtx = ctx;
-		NfcManager nfcManager = (NfcManager)mCtx.getSystemService(Context.NFC_SERVICE);
+	public BerIcNfcOs(Context ctx){
+		this.mContext = ctx;
+		NfcManager nfcManager = (NfcManager)mContext.getSystemService(Context.NFC_SERVICE);
 		mAdapter = nfcManager.getDefaultAdapter();
 
 	}
+
+	public void setNewTagListener(NewTagListenerCallback callback){
+		mCallback = callback;
+	}
+
+	public static boolean checkIntentIncludeTag(Intent intent){
+		if(intent!=null && intent.getAction()!=null){
+			if(intent.getAction().equals("android.nfc.action.NDEF_DISCOVERED") || intent.getAction().equals("android.nfc.action.TECH_DISCOVERED")){
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public void checkNewTag(Intent intent){
+		if(intent!=null && intent.getAction()!=null){
+			if(intent.getAction().equals("android.nfc.action.NDEF_DISCOVERED") || intent.getAction().equals("android.nfc.action.TECH_DISCOVERED")){
+				onNewTagDiscovered((Tag)intent.getParcelableExtra(NfcAdapter.EXTRA_TAG));
+			}
+		}
+	}
 	
-	public void initNfc(){
+	public void enableReadMode(Activity activity, Class<?> cls){
 		if(Build.VERSION.SDK_INT < 10){
 			return;
 		}
-		PendingIntent intent = PendingIntent.getActivity(this.mCtx, 0, new Intent(this.
-				mCtx, MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0);
+		PendingIntent intent = PendingIntent.getActivity(this.mContext, 0, new Intent(this.
+				mContext, cls).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0);
 		IntentFilter filter = new IntentFilter("android.nfc.action.TECH_DISCOVERED");
 		filter.addCategory("*/*");
         if (mAdapter != null) {
-        	mAdapter.enableForegroundDispatch(mCtx, intent, new IntentFilter[]{filter}, new String[][]{new String[]{NfcA.class.getName(), IsoDep.class.getName()}});
+        	mAdapter.enableForegroundDispatch(activity, intent, new IntentFilter[]{filter}, new String[][]{new String[]{NfcA.class.getName(), IsoDep.class.getName()}});
         }
 	}
 
-	//@SuppressLint("InlinedApi")
-	public void enableReadMode(){
-
-	}
-
-
-
-	public void disableReadMode(){
+	public void disableReadMode(Activity activity){
 		if(mAdapter != null && mAdapter.isEnabled())
-            mAdapter.disableForegroundDispatch(this.mCtx);
+            mAdapter.disableForegroundDispatch(activity);
 	}
 
-	public void setIsListen(boolean isListen, Context context){
+	public void setIsListen(boolean isListen){
 		this.isListen = isListen;
-		mContext = context;
 	}
 
 	public void onNewTagDiscovered(Tag tag){
@@ -189,12 +204,15 @@ public class BerIcNfcOs {
 		}
 
 		//newTagFind(tagId);
-		/*if (isListen==true){
-			WritableMap map = Arguments.createMap();
-			map.putString("csn", tagId);
-			//map.putString("desc", "还未连接设备");
-			sendEvent(mReactContext, "BerICCardNFCTagDiscovered", map);
-		}*/
+		if (isListen==true){
+//			WritableMap map = Arguments.createMap();
+//			map.putString("csn", tagId);
+//			//map.putString("desc", "还未连接设备");
+//			sendEvent(mReactContext, "BerICCardNFCTagDiscovered", map);
+			if (mCallback!=null) {
+				mCallback.newTagCallback(tagId);
+			}
+		}
 	}
 
 	 private void dealResult(byte[] result) throws Exception{

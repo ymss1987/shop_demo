@@ -39,9 +39,21 @@ public class SelectConnectActivity extends BaseActivity implements View.OnClickL
 
         switch(v.getId()){
             case R.id.connect_nfc:
+                mICCardOs.setICCardConnectMode(BerICCardOs.MODE_NFC);
+                if (mICCardOs.BerICCardDeviceIsSupport()) {
+                    if (mICCardOs.checkNFCisOpen()) {
+                        Intent intent1 = new Intent(SelectConnectActivity.this, GetCardInfoActivity.class);
+                        intent1.putExtra("mode", 1);
+                        startActivity(intent1);
+                    }else{
+                        Toast.makeText(this,"手机NFC没有打开，请先打开",Toast.LENGTH_LONG).show();
+                    }
+                }else{
+                    Toast.makeText(this,"手机不支持NFC",Toast.LENGTH_LONG).show();
+                }
                 break;
             case R.id.connect_dinghe:
-                mICCardOs.setICCardConnectMode(mICCardOs.MODE_DINGHE);
+                mICCardOs.setICCardConnectMode(BerICCardOs.MODE_DINGHE);
                 if (mICCardOs.BerICCardDeviceIsSupport()) {
                     Intent intent = new Intent(SelectConnectActivity.this, SearchDeviceActivity.class);
                     intent.putExtra("mode", 0);
@@ -51,7 +63,7 @@ public class SelectConnectActivity extends BaseActivity implements View.OnClickL
                 }
                 break;
             case R.id.connect_huada:
-                mICCardOs.setICCardConnectMode(mICCardOs.MODE_HUADA);
+                mICCardOs.setICCardConnectMode(BerICCardOs.MODE_HUADA);
                 if (mICCardOs.BerICCardDeviceIsSupport()) {
                     Intent intent1 = new Intent(SelectConnectActivity.this, SearchDeviceActivity.class);
                     intent1.putExtra("mode", 2);

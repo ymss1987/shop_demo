@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ymss.iccard.BerICCardOs;
+import com.ymss.iccard.BerIcNfcOs;
 import com.ymss.view.BaseActivity;
 
 import java.util.HashMap;
@@ -31,29 +32,51 @@ public class GetCardInfoActivity extends BaseActivity {
     private TextView mConnect;
     private TextView mChangeDevice;
     private int mConnectStatus = 0;
+    private int mMode = 0;
 
     private Handler mHandler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
+            switch(msg.what) {
+                case 0:
+                    String csn = ((Map) msg.obj).get("csn").toString();
+                    String ats = ((Map) msg.obj).get("ats").toString();
+                    AlertDialog.Builder builder = new AlertDialog.Builder(GetCardInfoActivity.this);
+                    builder.setTitle("寻卡成功");
+                    String text = "CSN：" + csn + "\n" + "ATS：" + ats;
+                    ClipboardManager cm = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                    // 将文本内容放到系统剪贴板里。
+                    cm.setText(text);
+                    text += "\n已将数据复制到剪贴板";
+                    builder.setMessage(text);
+                    builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            getCardInfo();
+                        }
+                    });
+                    builder.show();
+                    break;
+                case 1:
+                    csn = (String) msg.obj.toString();
+                    builder = new AlertDialog.Builder(GetCardInfoActivity.this);
+                    builder.setTitle("寻卡成功");
+                    text = "CSN：" + csn + "\n";
+                    cm = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                    // 将文本内容放到系统剪贴板里。
+                    cm.setText(text);
+                    text += "\n已将数据复制到剪贴板";
+                    builder.setMessage(text);
+                    builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
 
-            String csn = ((Map)msg.obj).get("csn").toString();
-            String ats = ((Map)msg.obj).get("ats").toString();
-            AlertDialog.Builder builder = new AlertDialog.Builder(GetCardInfoActivity.this);
-            builder.setTitle("寻卡成功");
-            String text = "CSN："+csn+"\n"+"ATS："+ats;
-            ClipboardManager cm = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-            // 将文本内容放到系统剪贴板里。
-            cm.setText(text);
-            text += "\n已将数据复制到剪贴板";
-            builder.setMessage(text);
-            builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    getCardInfo();
-                }
-            });
-            builder.show();
+                        }
+                    });
+                    builder.show();
+                    break;
+            }
         }
     };
     private BerICCardOs.ConnectCardCallback cardCallback = new BerICCardOs.ConnectCardCallback() {
@@ -79,7 +102,6 @@ public class GetCardInfoActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_card_info);
-        mICCardOs = BerICCardOs.getInstance(this.getApplicationContext());
         mTtatus_tip = (TextView)findViewById(R.id.status_tip);
         mConnect = (TextView)findViewById(R.id.connect);
         mBack = (LinearLayout)findViewById(R.id.title_back);
@@ -102,8 +124,54 @@ public class GetCardInfoActivity extends BaseActivity {
             }
         });
 
-        getCardInfo();
+        mICCardOs = BerICCardOs.getInstance(this.getApplicationContext());
+        Intent intent = getIntent();
+        if (intent!=null) {
+            mMode = intent.getIntExtra("mode", 0);
+        }
+        if (BerIcNfcOs.checkIntentIncludeTag(intent)){  //如果包含tag，则将mICCardOs模式设置为NFC
+            mICCardOs.setICCardConnectMode(BerICCardOs.MODE_NFC);
+            mMode = BerICCardOs.MODE_NFC;
+        }
+        if (mMode == BerICCardOs.MODE_NFC){
+            mICCardOs.setNFCNewTagListener(new BerIcNfcOs.NewTagListenerCallback() {
+                @Override
+                public void newTagCallback(String tag) {
+                    Message msg  =new Message();
+                    msg.what = 1;
+                    msg.obj = tag;
+                    mHandler.sendMessage(msg);
+                }
+            });
+            mICCardOs.checkNfcNewTag(intent);
+        }else {
+            getCardInfo();
+        }
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (mMode == BerICCardOs.MODE_NFC){
+            mICCardOs.setNFCEnableReadMode(this,GetCardInfoActivity.class);
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (mMode == BerICCardOs.MODE_NFC){
+            mICCardOs.setNFCDisableReadMode(this);
+        }
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        if (mMode == BerICCardOs.MODE_NFC){
+            mICCardOs.checkNfcNewTag(intent);
+        }
     }
 
     private void getCardInfo(){
