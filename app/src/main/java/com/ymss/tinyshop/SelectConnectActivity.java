@@ -1,5 +1,6 @@
 package com.ymss.tinyshop;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,8 +9,9 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.ymss.iccard.BerICCardOs;
+import com.ymss.view.BaseActivity;
 
-public class SelectConnectActivity extends AppCompatActivity implements View.OnClickListener{
+public class SelectConnectActivity extends BaseActivity implements View.OnClickListener{
 
     private LinearLayout mConnectNFC;
     private LinearLayout mConnectDinghe;

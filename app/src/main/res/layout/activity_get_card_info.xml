@@ -55,6 +55,7 @@
         android:layout_width="300dp"
         android:layout_height="360dp">
         <TextView
+            android:id="@+id/status_tip"
             android:layout_marginTop="50dp"
             android:text="请将倍棒卡贴于读卡器感应区"
             android:layout_width="wrap_content"

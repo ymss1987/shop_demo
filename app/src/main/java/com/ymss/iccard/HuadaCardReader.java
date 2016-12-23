@@ -357,6 +357,7 @@ public class HuadaCardReader extends BerbonCardReader {
     public void disconnectDevice(String addr){
         try{
             Log.i(LOGTAG, "disconnect device success");
+            connectedDevice = null;
             if (btSocket!=null){
                 btSocket.close();
                 btSocket = null;

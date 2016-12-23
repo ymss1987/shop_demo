@@ -16,60 +16,59 @@ public class BerbonCardReaderInfo {
     private String chipUid;     //读卡器芯片ID
     private int voltPercent;  //读卡器电量信息(0~100)
 
-    public void setBtName(String name){
-        btName = name;
-    }
-
-    public String getBtName(){
+    public String getBtName() {
         return btName;
     }
 
-    public void setBtAddr(String addr){
-        btAddr = addr;
+    public void setBtName(String btName) {
+        this.btName = btName;
     }
 
-    public String getBtAddr(){
+    public String getBtAddr() {
         return btAddr;
     }
 
-    public void setProdModel(String model){
-        prodModel = model;
+    public void setBtAddr(String btAddr) {
+        this.btAddr = btAddr;
     }
 
-    public String getProdModel(){
+    public String getProdModel() {
         return prodModel;
     }
 
-    public void setProdHwVer(String hwVer){
-        prodHwVer = hwVer;
+    public void setProdModel(String prodModel) {
+        this.prodModel = prodModel;
     }
 
-    public String getProdHwVer(){
+    public String getProdHwVer() {
         return prodHwVer;
     }
 
-    public void setProdSwVer(String swVer){
-        prodSwVer = swVer;
+    public void setProdHwVer(String prodHwVer) {
+        this.prodHwVer = prodHwVer;
     }
 
-    public String getProdSwVer(){
+    public String getProdSwVer() {
         return prodSwVer;
     }
 
-    public void setChipUid(String uid){
-        chipUid = uid;
+    public void setProdSwVer(String prodSwVer) {
+        this.prodSwVer = prodSwVer;
     }
 
-    public String getChipUid(){
+    public String getChipUid() {
         return chipUid;
     }
 
-    public void setVoltPercent(int volt){
-        voltPercent = volt;
+    public void setChipUid(String chipUid) {
+        this.chipUid = chipUid;
     }
 
-    public int getVoltPercent(){
+    public int getVoltPercent() {
         return voltPercent;
     }
 
+    public void setVoltPercent(int voltPercent) {
+        this.voltPercent = voltPercent;
+    }
 }

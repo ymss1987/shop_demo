@@ -16,13 +16,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ymss.iccard.BerICCardOs;
+import com.ymss.view.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class SearchDeviceActivity extends AppCompatActivity {
+public class SearchDeviceActivity extends BaseActivity {
 
     private ListView listDevices;
     private LinearLayout emptyDesc;
@@ -33,6 +34,7 @@ public class SearchDeviceActivity extends AppCompatActivity {
     SimpleAdapter adapter;
     List<Map<String, Object>> listData = new ArrayList<Map<String, Object>>();
     private ProgressDialog mPDialog;
+    private Map<String, Object> mConnectMap;
 
     Handler handler = new Handler() {
         @Override
@@ -54,6 +56,7 @@ public class SearchDeviceActivity extends AppCompatActivity {
                 case 1:   //连接
                     mPDialog.dismiss();// 关闭ProgressDialog
                     if (msg.arg1 == 0){   //连接成功，跳转
+                       // BaseActivity.finishAllActivity();
                         Intent intent = new Intent(SearchDeviceActivity.this,CardReaderMainActivity.class);
                         startActivity(intent);
                         finish();
@@ -98,11 +101,10 @@ public class SearchDeviceActivity extends AppCompatActivity {
         String title = intent.getStringExtra("name");
         if (title!=null) {
             String mac = intent.getStringExtra("mac");
-            Map<String, Object> map = new HashMap<String, Object>();
-            map.put("name", title);
-            map.put("mac", mac);
-            map.put("status", "已连接");
-            listData.add(map);
+            mConnectMap = new HashMap<String, Object>();
+            mConnectMap.put("name", title);
+            mConnectMap.put("mac", mac);
+            mConnectMap.put("status", "已连接");
         }else{
         }
 
@@ -138,6 +140,10 @@ public class SearchDeviceActivity extends AppCompatActivity {
 
     private void searchDevices(){
         //mPDialog.setTitle("搜索设备");
+        listData.clear();
+        if (mConnectMap!=null) {
+            listData.add(mConnectMap);
+        }
         mPDialog.setMessage("设备搜索中，请等待...");
         mPDialog.show();
         research_device.setVisibility(View.GONE);

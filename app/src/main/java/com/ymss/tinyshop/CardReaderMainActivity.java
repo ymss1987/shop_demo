@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,10 +29,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 public class CardReaderMainActivity extends BaseActivity {
 
+    public static final int GETCARDINFO_CODE = 1000;
     private ListView mListFunction;
     private TextView mShownMessage;
+    private ScrollView mScrollView;
+    private TextView mClearScreen;
     private SimpleAdapter mAdapter;
     List<Map<String,Object>> mListData = new ArrayList<>();
     private BerICCardOs mICCardOs;
@@ -113,8 +118,49 @@ public class CardReaderMainActivity extends BaseActivity {
                     }
                     break;
             }
+            scroll2Bottom(mScrollView, mShownMessage);
         }
     };
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mICCardOs.BerICCardReleaseDevice();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch(requestCode){
+            case GETCARDINFO_CODE:
+                if (resultCode == 1){
+                    mConnect = 0;
+                    Map map = mListData.get(0);
+                    map.put("fun", "重新连接");
+                    map.put("desc", "重新连接之前连接成功的读卡器,，连接成功后可以对读卡器进行操作");
+                    mAdapter.notifyDataSetChanged();
+                }
+                break;
+        }
+    }
+
+    /**
+     * @Title: onChangeConnectStatus
+     * @Description: 父类在用户状态发生改变时调用此方法，子类复写该方法实现父类与子类的通讯
+     * @param @param data 需要传递给子类的数据
+     * @return void
+     * @author york
+     */
+    protected void onChangeConnectStatus(int status, final String data) {
+        if (status == 1){
+            mConnect = 0;
+            Map map = mListData.get(0);
+            map.put("fun", "重新连接");
+            map.put("desc", "重新连接之前连接成功的读卡器,，连接成功后可以对读卡器进行操作");
+            mAdapter.notifyDataSetChanged();
+            Toast.makeText(this,data,Toast.LENGTH_SHORT).show();
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -124,6 +170,14 @@ public class CardReaderMainActivity extends BaseActivity {
         mListFunction.setClickable(true);
         mShownMessage = (TextView)findViewById(R.id.shown_message);
         mShownMessage.setMovementMethod(new ScrollingMovementMethod());
+        mScrollView = (ScrollView) findViewById(R.id.sv_show);
+        mClearScreen = (TextView)findViewById(R.id.clear_screen);
+        mClearScreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mShownMessage.setText("");
+            }
+        });
 
         mICCardOs = BerICCardOs.getInstance(this.getApplicationContext());
         mMac = mICCardOs.getConnectDeviceAddress();
@@ -218,7 +272,7 @@ public class CardReaderMainActivity extends BaseActivity {
                 text="显示文字:\n";
                 break;
             case 9:
-                text="清楚屏幕显示:\n";
+                text="清除设备显示:\n";
                 break;
             case 10:
                 text="密码输入:\n";
@@ -255,8 +309,12 @@ public class CardReaderMainActivity extends BaseActivity {
     }
 
     private void execFunction1(){
+        if (mConnect == 0){
+            mShownMessage.append("连接已断开，请重新连接后再操作\n");
+            return;
+        }
         Intent intent = new Intent(CardReaderMainActivity.this,GetCardInfoActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent,GETCARDINFO_CODE);
     }
 
     private void execFunction2(){
@@ -302,7 +360,8 @@ public class CardReaderMainActivity extends BaseActivity {
                                 }
                             });
                         }else{
-                            Toast.makeText(CardReaderMainActivity.this,"设备蓝牙名称不能为空",Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(CardReaderMainActivity.this,"设备蓝牙名称不能为空",Toast.LENGTH_SHORT).show();
+                            mShownMessage.append("设备蓝牙名称不能为空！\n");
                         }
                     }
                 });
@@ -383,7 +442,8 @@ public class CardReaderMainActivity extends BaseActivity {
                                 }
                             });
                         }else{
-                            Toast.makeText(CardReaderMainActivity.this,"发送的命令不能为空",Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(CardReaderMainActivity.this,"发送的命令不能为空",Toast.LENGTH_SHORT).show();
+                            mShownMessage.append("发送的命令不能为空！\n");
                         }
                     }
                 });
@@ -412,7 +472,8 @@ public class CardReaderMainActivity extends BaseActivity {
                                 }
                             });
                         }else{
-                            Toast.makeText(CardReaderMainActivity.this,"显示的文字不能为空",Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(CardReaderMainActivity.this,"显示的文字不能为空",Toast.LENGTH_SHORT).show();
+                            mShownMessage.append("显示的文字不能为空！\n");
                         }
                     }
                 });
@@ -526,7 +587,7 @@ public class CardReaderMainActivity extends BaseActivity {
 
         Map<String, Object> map9 = new HashMap<String, Object>();
         map9.put("order", "10");
-        map9.put("fun", "清除屏幕显示");
+        map9.put("fun", "清除设备显示");
         map9.put("desc", "清除读卡器屏幕的文字显示，华大读卡器有效，鼎和读卡器无效");
         mListData.add(map9);
 
@@ -565,7 +626,7 @@ public class CardReaderMainActivity extends BaseActivity {
 
     //0倍棒卡，1非倍棒卡，其它值检测失败
     private void checkIsBerbonCardCallback(int success, String step, int status, String desc,String data){
-        String text="检测倍棒卡\n";
+        String text="检测倍棒卡：\n";
         if (success == 0){
             text+="当前卡片是倍棒卡\n";
         }else if (success == 1){
@@ -663,6 +724,27 @@ public class CardReaderMainActivity extends BaseActivity {
                 } else {
                     checkIsBerbonCardCallback(2,"seleceBerbonADF",status, desc, data);
                 }
+            }
+        });
+    }
+
+    private void scroll2Bottom(final ScrollView scroll, final View inner) {
+        //Handler handler = new Handler();
+        mHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                // TODO Auto-generated method stub
+                if (scroll == null || inner == null) {
+                    return;
+                }
+                // 内层高度超过外层
+                int offset = inner.getMeasuredHeight()
+                        - scroll.getMeasuredHeight();
+                if (offset < 0) {
+                    System.out.println("定位...");
+                    offset = 0;
+                }
+                scroll.scrollTo(0, offset);
             }
         });
     }

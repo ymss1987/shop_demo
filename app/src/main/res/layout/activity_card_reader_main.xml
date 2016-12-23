@@ -41,6 +41,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="50dp" />
         </LinearLayout>
+        <TextView
+            android:id="@+id/clear_screen"
+            android:gravity="center_vertical"
+            android:textSize="18dp"
+            android:textColor="#ffffff"
+            android:text="清屏"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
     </RelativeLayout>
 
     <TextView
@@ -48,16 +58,22 @@
         android:layout_margin="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-
+<ScrollView
+    android:id="@+id/sv_show"
+    android:fadeScrollbars="false"
+    android:scrollbarAlwaysDrawVerticalTrack="true"
+    android:scrollbars="vertical"
+    android:background="#ffffff"
+    android:layout_width="match_parent"
+    android:layout_height="160dp">
         <TextView
             android:id="@+id/shown_message"
             android:background="#ffffff"
             android:scrollbars = "vertical"
-            android:ellipsize="end"
             android:textColor="#000000"
-            android:scrollbarStyle="insideInset"
             android:layout_width="match_parent"
-            android:layout_height="160dp" />
+            android:layout_height="match_parent" />
+</ScrollView>
     <TextView
         android:text="功能列表"
         android:layout_margin="5dp"

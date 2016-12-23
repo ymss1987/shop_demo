@@ -85,6 +85,7 @@ public class BerICCardOs implements BerbonCardReader.CardReaderCallback {
 			mDingheReader.releaseDevice();
 		}
 		mCardReader = null;
+		instance = null;
 	}
 
 	public boolean BerICCardDeviceIsSupport(){
